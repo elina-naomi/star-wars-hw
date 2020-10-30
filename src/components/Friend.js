@@ -1,0 +1,18 @@
+import React from 'react';
+import friend1 from "../img/friend1.jpg";
+import style from '../css modules/friend.module.css'
+
+const Friend = (props) => {
+    let styles = 'col-4 p-1 ';
+    if(props.pos===7) {
+        styles+=style.bottomLeft;
+    }
+    if(props.pos===9) {
+        styles+=style.bottomRight;
+    }
+    return (
+        <img className={styles} src={props.picture} alt="friend"/>
+    );
+};
+
+export default Friend;

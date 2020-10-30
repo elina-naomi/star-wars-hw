@@ -1,15 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
 header, footer {
     background-color: rgba(60, 69, 67, 0.6);
 
-}
-
-body {
-    font-family: 'Poller One', cursive;
-    background-image: url("img/sky.jpg");
-    color: #d8c97b;
-    background-attachment: fixed;
 }
 
 header {
@@ -26,7 +18,6 @@ header > h1 {
     border-color: red;
     font-size: 1em;
     color: #d8c97b;
-
 }
 
 
@@ -45,34 +36,13 @@ footer {
 
 
 
-.farGalaxy {
-    font-size: 1.5em;
-    letter-spacing: 0.2em;
-    line-height: 1.5;
-    text-align: justify;
-}
 
-.bottomLeft {
-    border-bottom-left-radius: 15px;
-}
-
-.bottomRight {
-    border-bottom-right-radius: 15px;
-}
-
-.hero {
-    box-shadow: rgba(60, 69, 67, 0.6) 10px 10px;
-}
 
 footer .btn {
     font-size: 0.8em;
-
 }
 
-.email {
-    color: black;
-    font-size: 1.2em;
-}
+
 
 .right > div {
     display: flex;
@@ -80,5 +50,4 @@ footer .btn {
     width: 492px;
     justify-content: space-evenly;
 }
-
 
