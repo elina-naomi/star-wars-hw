@@ -1,44 +1,32 @@
-import './App.css';
-import React from "react";
+import React, {Component} from 'react';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import {homePage} from "./utils/constants";
-import {ApplContext} from "./components/utils/Context";
+import styles from './App.css'
 
-class App extends React.Component {
-
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePage: window.location.hash.substring(2)
+            character: 'luke'
         }
     }
 
-    changeActivePage = (page) => {
+    updateCharacter=(new_character) => {
         this.setState({
-            activePage: page
-        })
-    }
-
-    componentDidMount() {
-        window.addEventListener('hashchange',()=>{
-            this.changeActivePage(window.location.hash.substring(2)); // начиная со 2го символа пропуская решентку и слеш
+            character: new_character
         })
     }
 
     render() {
         return (
-            <div className='container-fluid'>
-                <ApplContext.Provider value={{
-                    changePage: this.changeActivePage,
-                    activePage: this.state.activePage
-                }}>
-                    <Header/>
-                    <Main/>
-                </ApplContext.Provider>
-                <Footer/>
-            </div>
+
+                <div className='container-fluid'>
+                    <Header character={this.state.character}/>
+                    <Main character={this.state.character} updateCharacter={this.updateCharacter}/>
+                    <Footer/>
+                </div>
+
         );
     }
 }

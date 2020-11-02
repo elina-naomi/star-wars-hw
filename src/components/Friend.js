@@ -1,6 +1,6 @@
 import React from 'react';
-import friend1 from "../img/friend1.jpg";
 import style from '../css modules/friend.module.css'
+import {base_url} from "../utils/constants";
 
 const Friend = (props) => {
     let styles = 'col-4 p-1 ';
@@ -11,8 +11,8 @@ const Friend = (props) => {
         styles+=style.bottomRight;
     }
     return (
-        <img className={styles} src={props.picture} alt="friend"/>
+        <img className={styles} src={`${base_url}/${props.picture}`}
+             alt={props.sign}/>
     );
 };
-
 export default Friend;

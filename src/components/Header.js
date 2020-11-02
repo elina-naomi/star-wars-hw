@@ -1,12 +1,14 @@
 import React from 'react';
 import Navigation from "./Navigation";
+import {characters} from "../utils/constants";
 
-const Header = () => {
+const Header = (props) => {
     return (
-        <header>
-            <Navigation/>
-            <h1 className="text-center py-3">Luke Skywalker</h1>
-        </header>
+            <header>
+                <Navigation hero={props.character}/>
+                <h1 className="text-center py-3">{characters[props.character].name}</h1>
+            </header>
+
     );
 };
 

@@ -1,39 +1,31 @@
 import React from 'react';
+import {aboutMePage, contactPage, homePage, starWarsPage} from "../utils/constants";
+import {Route} from "react-router-dom";
+import {Switch} from "react-router-dom";
 
-import main from '../img/main.jpg';
-import Hero from "./Hero";
-import Dreamteam from "./Dreamteam";
-import FarGalaxy from "./FarGalaxy";
 import Home from "./Home";
 import AboutMe from "./AboutMe";
 import StarWars from "./StarWars";
 import Contact from "./Contact";
-import {aboutMePage, contactPage, homePage, starWarsPage} from "../utils/constants";
 import Error404 from "./Error404";
-import {ApplContext} from "./utils/Context";
 
-const Main = () => {
-    function drawPage(activePage) {
-        switch (activePage) {
-            case aboutMePage:
-                return <AboutMe/>;
-            case starWarsPage:
-                return <StarWars/>
-            case contactPage:
-                return <Contact/>
-            case homePage:
-                return <Home/>
-            default:
-                return <Error404/>
-        }
-    }
+
+
+const Main = (props) => {
+
 
     return (
-        <ApplContext.Consumer>
-            {value=>drawPage(value.activePage)}
-        </ApplContext.Consumer>
-    )
+        <div>
+            <Switch>
+                <Route path={[`/${aboutMePage}`,`/${aboutMePage}/:hero`]} exact render={routerProps=><AboutMe{...routerProps} changeHero={props.updateCharacter}/>}/>
+                <Route path={`/${starWarsPage}`} exact component={StarWars}/>
+                <Route path={`/${contactPage}`} exact component={Contact}/>
+                <Route path={['/',`/${homePage}`,`/${homePage}/:hero`]} exact render={routerProps=><Home{...routerProps} changeHero={props.updateCharacter} character={props.character}/>}/>
+                <Route component={Error404}/>
+            </Switch>
 
+        </div>
+    );
 };
 
 export default Main;

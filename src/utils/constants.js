@@ -7,9 +7,11 @@ import friend6 from "../img/friend6.jpg";
 import friend7 from "../img/friend7.jpg";
 import friend8 from "../img/friend8.jpg";
 import friend9 from "../img/friend9.jpg";
+import friend0 from '../img/main.jpg';
 
-export const friends = [friend1, friend2, friend3, friend4, friend5,
-    friend6, friend7, friend8, friend9];
+export const base_url = 'https://sw-info-api.herokuapp.com';
+export const version='/v1'
+
 
 export const homePage = 'home';
 export const contactPage = 'contact';
@@ -27,3 +29,59 @@ export function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
+export const characters = {
+
+    luke: {
+        name: "Luke Skywalker",
+        img: friend0,
+        url: `${base_url+version}/peoples/1`
+    },
+    r2d2: {
+        name: "R2-D2",
+        img: friend1,
+        url: `${base_url+version}/peoples/3`
+    },
+    c3po: {
+        name: "C-3PO",
+        img: friend2,
+        url: `${base_url+version}/peoples/2`
+    },
+    ewok: {
+        name: "Wicket Systri Warrick",
+        img: friend3,
+        url: `${base_url+version}/peoples/30`
+    },
+    chewbacca: {
+        name: "Chewbacca",
+        img: friend4,
+        url: `${base_url+version}/peoples/13`
+    },
+    han_solo: {
+        name: "Han Solo",
+        img: friend5,
+        url: `${base_url+version}/peoples/14`
+    },
+    leia: {
+        name: "Leia Organa",
+        img: friend6,
+        url: `${base_url+version}/peoples/5`
+    },
+    falcon: {
+        name: "Millenium Falcon",
+        img: friend7,
+        url: `${base_url+version}/transports/10`
+    },
+    obi_wan: {
+        name: "Obi-Wan Kenobi",
+        img: friend8,
+        url: `${base_url+version}/peoples/10`
+    },
+    yoda: {
+        name: "Yoda",
+        img: friend9,
+        url: `${base_url+version}/peoples/0`
+    }
+};
+// export const friends = [friend1, friend2, friend3, friend4, friend5,
+//     friend6, friend7, friend8, friend9];
+export const friends = Object.keys(characters); //массив ключей

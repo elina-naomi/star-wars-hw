@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {characters, friends} from "../utils/constants";
 
 class AboutMe extends Component {
     constructor(props) {
@@ -9,15 +10,20 @@ class AboutMe extends Component {
     }
 
     componentDidMount() {
+
+       let key = this.props.match.params.hero||'luke';
+        if(!friends.includes(key)) {
+            key = 'luke';
+        }
         const limit = 30 * 24 * 3600 * 1000; //30 дней
-        const heroInfo = JSON.parse(localStorage.getItem('hero_info'));
+        const heroInfo = JSON.parse(localStorage.getItem(`${key}Info`));
         if(heroInfo && (+new Date() - heroInfo.creationDate < limit)){
             this.setState({
                 isLoading: false,
                 heroInfo: heroInfo
             })
         }else {
-            fetch('https://sw-info-api.herokuapp.com/v1/peoples/1')
+            fetch(characters[key].url)
                 .then(response => response.json())
                 .then(data => {
                     const heroInfo = {
@@ -35,9 +41,10 @@ class AboutMe extends Component {
                         isLoading: false,
                         heroInfo: heroInfo
                     });
-                    localStorage.setItem('hero_info',JSON.stringify(heroInfo));
+                    localStorage.setItem(`${key}Info`,JSON.stringify(heroInfo));
                 })
         }
+        this.props.changeHero(key);
     }
 
     render() {
